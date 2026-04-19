@@ -1,0 +1,60 @@
+/* Variables globales para colores y temas */
+:root {
+    --primary: #d4af37;
+    --dark: #121212;
+    --light: #ffffff;
+    --grey: #1e1e1e;
+}
+
+/* Reseteo de márgenes y configuración de box-sizing */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background-color: var(--dark); color: var(--light); line-height: 1.6; }
+
+/* Estilos de la barra de navegación fija */
+.navbar { display: flex; justify-content: space-between; padding: 20px 5%; background: rgba(0,0,0,0.9); position: fixed; width: 100%; top: 0; z-index: 1000; }
+.logo { font-size: 24px; font-weight: bold; color: var(--primary); }
+.nav-links { list-style: none; display: flex; gap: 20px; }
+.nav-links a { text-decoration: none; color: white; transition: 0.3s; }
+.nav-links a:hover { color: var(--primary); }
+
+/* Encabezado principal (Hero Section) */
+.hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1350&q=80') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; }
+.hero h1 { font-size: 4rem; margin-bottom: 10px; }
+.hero p { margin-bottom: 40px; font-size: 1.2rem; color: #ddd; }
+
+/* Botones genéricos */
+.btn-primary { padding: 15px 30px; background: var(--primary); color: var(--dark); text-decoration: none; font-weight: bold; border-radius: 5px; }
+
+/* Grilla de Servicios */
+.section-title { text-align: center; margin: 50px 0; color: var(--primary); font-size: 2.5rem; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; padding: 0 10%; }
+.service-card { background: var(--grey); padding: 40px; border-radius: 10px; text-align: center; transition: transform 0.3s; }
+.service-card:hover { transform: translateY(-10px); }
+.service-card i { font-size: 40px; color: var(--primary); margin-bottom: 20px; }
+
+/* Sección de características funcionales */
+.features { padding: 60px 10%; background: var(--dark); text-align: center; }
+.features-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+.feature-item { font-size: 1.1rem; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+
+/* Estilos del formulario de Reserva */
+.booking { background: #1a1a1a; padding: 80px 10%; }
+.booking-container { max-width: 600px; margin: 0 auto; background: var(--grey); padding: 40px; border-radius: 15px; border: 1px solid var(--primary); }
+form input, form select { width: 100%; padding: 12px; margin-bottom: 20px; background: #333; border: none; color: white; }
+.btn-submit { width: 100%; padding: 15px; background: var(--primary); border: none; font-weight: bold; cursor: pointer; }
+
+/* Sección de contacto y Google Maps */
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 50px 10%; }
+
+/* Botón flotante de WhatsApp */
+.whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; }
+
+/* Ajustes para dispositivos móviles (Responsive) */
+@media (max-width: 768px) {
+    .info-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.5rem; }
+}
+
+/* Definición de animaciones de entrada */
+.fade-in { animation: fadeIn 1.5s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }

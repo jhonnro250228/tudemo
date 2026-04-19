@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración técnica y metadatos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbería isi y aitor | Estilo y Tradición</title>
+    <!-- Vinculación de estilos y fuentes de iconos -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación superior -->
+    <nav class="navbar">
+        <div class="logo">B<span>IA</span></div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#funcionales">Funcionales</a></li>
+            <li><a href="#reservas">Reservas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sección de bienvenida (Hero) con llamado a la acción -->
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">Barbería isi y aitor</h1>
+            <p class="fade-in delay">Donde el estilo se encuentra con la excelencia en Bilbao.</p>
+            <a href="#reservas" class="btn-primary fade-in delay-2">Reserva tu Cita</a>
+        </div>
+    </header>
+
+    <!-- Catálogo de servicios principales -->
+    <section id="servicios" class="services">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-cut"></i>
+                <h3>Corte Clásico</h3>
+                <p>Degradados perfectos y estilos tradicionales.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-magic"></i>
+                <h3>Barba de Caballero</h3>
+                <p>Perfilado con navaja y ritual de toalla caliente.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-crown"></i>
+                <h3>Tratamiento VIP</h3>
+                <p>Corte, barba y exfoliación facial.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de beneficios y propuesta de valor -->
+    <section id="funcionales" class="features">
+        <h2 class="section-title">Calidad Garantizada</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fas fa-check-circle"></i> <span>Atención Personalizada</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-check-circle"></i> <span>Productos de Primera</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-check-circle"></i> <span>Ambiente Relajado</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de reservas interactivo -->
+    <section id="reservas" class="booking">
+        <div class="booking-container">
+            <h2>Reserva tu espacio</h2>
+            <form id="whatsappForm">
+                <input type="text" id="name" placeholder="Tu Nombre" required>
+                <select id="service" required>
+                    <option value="">Selecciona un servicio</option>
+                    <option value="Corte">Corte de Pelo</option>
+                    <option value="Barba">Arreglo de Barba</option>
+                    <option value="Completo">Servicio Completo</option>
+                </select>
+                <input type="date" id="date" required>
+                <button type="submit" class="btn-submit">Enviar Reserva</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Información de contacto y mapa de ubicación -->
+    <section id="contacto" class="info">
+        <div class="info-grid">
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.7!2d-2.924!3d43.25!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fce!2sZamakola%20Kalea%2C%2049!5e0!3m2!1ses!2ses!4v1620000000000" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="details">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Zamakola Kalea, 49, Bilbao</p>
+                <p><i class="fas fa-phone"></i> 944 15 87 46</p>
+                <h3>Horario</h3>
+                <p>Lun - Vie: 09:30 - 20:00</p>
+                <p>Sáb: 09:00 - 14:00</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón flotante de contacto directo por WhatsApp -->
+    <a href="https://wa.me/34944158746" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Lógica de la página -->
+    <script src="script.js"></script>
+</body>
+</html>

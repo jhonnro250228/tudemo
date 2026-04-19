@@ -1,0 +1,128 @@
+/* Variables de diseño PREMIUM */
+:root {
+    --gold: #c5a059;
+    --bg-dark: #0f0f0f;
+    --card-bg: #1a1a1a;
+    --text-light: #f5f5f5;
+    --text-muted: #a0a0a0;
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Reset y Base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    font-family: 'Montserrat', sans-serif; 
+    background-color: var(--bg-dark); 
+    color: var(--text-light); 
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Navegación */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 25px 8%; background: rgba(15, 15, 15, 0.95);
+    position: fixed; width: 100%; top: 0; z-index: 1000;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+}
+.logo { font-family: 'Bebas Neue', cursive; font-size: 1.8rem; letter-spacing: 2px; }
+.logo span { color: var(--gold); }
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links a { text-decoration: none; color: var(--text-light); font-size: 0.9rem; font-weight: 700; transition: var(--transition); }
+.nav-links a:hover { color: var(--gold); }
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), 
+                url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1350&q=80') center/cover;
+    display: flex; align-items: center; padding: 0 8%;
+}
+.hero h1 { font-family: 'Bebas Neue', cursive; font-size: 5rem; line-height: 1; margin-bottom: 20px; }
+.hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 500px; margin-bottom: 35px; }
+.hero-btns { display: flex; gap: 15px; }
+
+/* Botones */
+.btn-primary { 
+    padding: 15px 35px; background: var(--gold); color: black; 
+    text-decoration: none; font-weight: 700; border-radius: 4px; transition: var(--transition);
+}
+.btn-outline { 
+    padding: 15px 35px; border: 2px solid var(--gold); color: var(--gold); 
+    text-decoration: none; font-weight: 700; border-radius: 4px; transition: var(--transition);
+}
+.btn-primary:hover { background: #e0b86b; transform: translateY(-3px); }
+
+/* Servicios */
+.services { padding: 100px 8%; text-align: center; }
+.section-title { font-family: 'Bebas Neue', cursive; font-size: 3rem; margin-bottom: 50px; color: var(--gold); }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.service-card { 
+    background: var(--card-bg); padding: 50px 30px; border-radius: 8px;
+    transition: var(--transition); border: 1px solid transparent;
+}
+.service-card:hover { border-color: var(--gold); transform: translateY(-10px); }
+.service-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; }
+.service-card h3 { margin-bottom: 15px; }
+.service-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+/* Sección Funcionales */
+.features { background: #151515; padding: 80px 8%; border-top: 1px solid #222; }
+.features-list { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 40px; }
+.feature-item { font-size: 1.2rem; display: flex; align-items: center; gap: 15px; font-weight: 700; color: var(--gold); }
+
+/* Reservas */
+.booking { padding: 100px 8%; background: var(--bg-dark); }
+.booking-wrapper { 
+    max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; 
+    background: var(--card-bg); padding: 50px; border-radius: 12px;
+}
+.booking-text h2 { font-family: 'Bebas Neue', cursive; font-size: 2.5rem; margin-bottom: 20px; }
+.booking-text p { color: var(--text-muted); }
+
+form input, form select {
+    width: 100%; padding: 15px; margin-bottom: 20px; background: #2a2a2a;
+    border: 1px solid #333; color: white; border-radius: 4px;
+}
+.btn-submit {
+    width: 100%; padding: 18px; background: var(--gold); border: none;
+    font-weight: 800; text-transform: uppercase; cursor: pointer; transition: var(--transition);
+}
+.btn-submit:hover { letter-spacing: 1px; }
+
+/* Contacto */
+.contact { padding: 80px 8%; background: #0a0a0a; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.contact-info h3 { font-family: 'Bebas Neue', cursive; font-size: 2rem; margin-bottom: 20px; color: var(--gold); }
+.contact-info p { margin-bottom: 15px; display: flex; align-items: center; gap: 15px; }
+.contact-info i { color: var(--gold); }
+
+/* Botón WhatsApp Flotante */
+.wpp-btn {
+    position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px;
+    background: #25d366; color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 35px; text-decoration: none; z-index: 2000;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+    transition: var(--transition);
+}
+.wpp-btn:hover { transform: scale(1.1) rotate(10deg); }
+
+/* Animaciones */
+.reveal { opacity: 0; transform: translateY(30px); animation: fadeInUp 0.8s forwards; }
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .navbar { padding: 15px 5%; }
+    .nav-links { gap: 15px; }
+    .nav-links a { font-size: 0.75rem; }
+    .hero h1 { font-size: 3.5rem; }
+    .booking-wrapper, .contact-grid { grid-template-columns: 1fr; }
+    .booking-wrapper { padding: 30px; }
+}

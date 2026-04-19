@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos esenciales para SEO y adaptabilidad móvil -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IL BARBIERE DI FANA | Barbería de Autor en Bilbao</title>
+    
+    <!-- Importación de Estilos y Recursos Externos -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Barra de Navegación Fija -->
+    <nav class="navbar">
+        <div class="logo">IL BARBIERE <span>DI FANA</span></div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#funcionales">Funcionales</a></li>
+            <li><a href="#reservas">Reservas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sección Hero (Portada) -->
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <h1 class="fade-up">Elegancia en cada detalle</h1>
+            <p class="fade-up delay-1">Tradición italiana y técnica moderna en el corazón de Abando.</p>
+            <div class="hero-actions fade-up delay-2">
+                <a href="#reservas" class="btn-gold">Solicitar Cita</a>
+                <a href="#servicios" class="btn-text">Descubrir Servicios</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección de Servicios Premium -->
+    <section id="servicios" class="services">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="services-container">
+            <div class="service-box">
+                <div class="icon"><i class="fas fa-cut"></i></div>
+                <h3>Corte de Autor</h3>
+                <p>Asesoramiento de imagen y corte personalizado según tus facciones.</p>
+            </div>
+            <div class="service-box">
+                <div class="icon"><i class="fas fa-soap"></i></div>
+                <h3>Ritual de Barba</h3>
+                <p>Afeitado clásico con toallas calientes y aceites esenciales.</p>
+            </div>
+            <div class="service-box">
+                <div class="icon"><i class="fas fa-gem"></i></div>
+                <h3>Cuidado Integral</h3>
+                <p>Tratamientos capilares y exfoliación facial para caballeros.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Funcionales (Propuesta de Valor) -->
+    <section id="funcionales" class="features">
+        <div class="feature-card">
+            <div class="feature-img"></div>
+            <div class="feature-info">
+                <h2 class="section-title left">La Experiencia</h2>
+                <p>En IL BARBIERE DI FANA, no solo cortamos el cabello; creamos un espacio de desconexión y estilo único.</p>
+                <ul class="check-list">
+                    <li><i class="fas fa-check"></i> Barberos con formación internacional</li>
+                    <li><i class="fas fa-check"></i> Ambiente clásico y relajante</li>
+                    <li><i class="fas fa-check"></i> Productos de alta gama</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sistema de Reservas vía WhatsApp -->
+    <section id="reservas" class="booking">
+        <div class="booking-card">
+            <h2>Reserva tu Espacio</h2>
+            <p>Selecciona tu servicio y nos pondremos en contacto contigo.</p>
+            <form id="bookingForm">
+                <input type="text" id="clientName" placeholder="Tu Nombre" required>
+                <select id="selectedService" required>
+                    <option value="">¿Qué servicio deseas?</option>
+                    <option value="Corte de Autor">Corte de Autor</option>
+                    <option value="Ritual de Barba">Ritual de Barba</option>
+                    <option value="Servicio Completo">Servicio Completo</option>
+                </select>
+                <input type="date" id="bookingDate" required>
+                <button type="submit" class="btn-submit">Confirmar por WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Información de Contacto y Ubicación -->
+    <section id="contacto" class="contact">
+        <div class="contact-grid">
+            <div class="contact-details">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Poza Lizentziatuaren Kalea, 26, 48009 Bilbao</p>
+                <p><i class="fas fa-phone"></i> 688 71 86 29</p>
+                <h3>Horario</h3>
+                <p>Lun - Vie: 09:30 - 20:00</p>
+                <p>Sáb: 09:30 - 14:00</p>
+            </div>
+            <div class="contact-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.3!2d-2.936!3d43.26!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4ad7!2sPoza%20Lizentziatuaren%20Kalea%2C%2026!5e0!3m2!1ses!2ses!4v1620000000000" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón Flotante de WhatsApp Global -->
+    <a href="https://wa.me/34688718629" class="whatsapp-float" target="_blank" aria-label="Chat con nosotros">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+/* Definición de variables de marca PREMIUM */
+:root {
+    --primary-green: #1a2f23;
+    --gold: #d4af37;
+    --cream: #fdfaf5;
+    --text-dark: #2c2c2c;
+    --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Reset y Tipografía Base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    font-family: 'Lato', sans-serif; 
+    background-color: var(--cream); 
+    color: var(--text-dark); 
+    scroll-behavior: smooth;
+    line-height: 1.6;
+}
+
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+/* Navegación Elegante */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 8%; background: white;
+    position: fixed; width: 100%; top: 0; z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+}
+.logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-green); letter-spacing: 1px; }
+.logo span { color: var(--gold); }
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; transition: var(--transition); }
+.nav-links a:hover { color: var(--gold); }
+
+/* Hero Section con profundidad visual */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(26, 47, 35, 0.7), rgba(26, 47, 35, 0.7)), 
+                url('https://images.unsplash.com/photo-1532710093739-9470acff878f?auto=format&fit=crop&w=1350&q=80') center/cover;
+    display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+}
+.hero h1 { font-size: 4.5rem; margin-bottom: 20px; }
+.hero p { font-size: 1.3rem; max-width: 600px; margin: 0 auto 40px; font-weight: 300; }
+.hero-actions { display: flex; gap: 20px; justify-content: center; }
+
+/* Botonera */
+.btn-gold { 
+    background: var(--gold); color: white; padding: 15px 40px; 
+    text-decoration: none; font-weight: 700; border-radius: 2px; transition: var(--transition);
+}
+.btn-text { 
+    border: 1px solid white; color: white; padding: 15px 40px; 
+    text-decoration: none; font-weight: 700; transition: var(--transition);
+}
+.btn-gold:hover { background: #b8952c; transform: translateY(-3px); }
+
+/* Sección de Servicios */
+.services { padding: 100px 8%; text-align: center; }
+.section-title { font-size: 3rem; margin-bottom: 60px; color: var(--primary-green); }
+.services-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+.service-box { padding: 40px; background: white; transition: var(--transition); border-bottom: 4px solid transparent; }
+.service-box:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-color: var(--gold); }
+.service-box i { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; }
+
+/* Sección Funcionales (La Experiencia) */
+.features { padding: 80px 8%; background: #f0f0f0; }
+.feature-card { display: flex; background: white; border-radius: 4px; overflow: hidden; }
+.feature-img { 
+    flex: 1; background: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=800&q=80') center/cover;
+    min-height: 400px;
+}
+.feature-info { flex: 1; padding: 60px; }
+.section-title.left { text-align: left; margin-bottom: 20px; }
+.check-list { list-style: none; margin-top: 30px; }
+.check-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 15px; font-weight: 700; }
+.check-list i { color: var(--gold); }
+
+/* Formulario de Reservas */
+.booking { padding: 100px 8%; background: var(--primary-green); color: white; text-align: center; }
+.booking-card { max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.05); padding: 50px; border: 1px solid rgba(212, 175, 55, 0.3); }
+.booking-card h2 { font-size: 2.5rem; margin-bottom: 15px; }
+
+form input, form select { 
+    width: 100%; padding: 15px; margin-bottom: 20px; background: transparent; 
+    border: 1px solid rgba(255,255,255,0.2); color: white; font-family: inherit;
+}
+form select option { background: var(--primary-green); }
+.btn-submit { 
+    width: 100%; padding: 18px; background: var(--gold); border: none; 
+    color: white; font-weight: 800; cursor: pointer; text-transform: uppercase; 
+    transition: var(--transition);
+}
+
+/* Contacto y Mapa */
+.contact { padding: 80px 8%; background: white; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.contact-details h3 { font-size: 1.8rem; margin-bottom: 20px; color: var(--primary-green); }
+.contact-details p { margin-bottom: 15px; display: flex; align-items: center; gap: 15px; }
+.contact-details i { color: var(--gold); }
+
+/* WhatsApp Flotante */
+.whatsapp-float {
+    position: fixed; bottom: 40px; right: 40px; width: 65px; height: 65px;
+    background: #25d366; color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 35px; text-decoration: none; z-index: 2000;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: var(--transition);
+}
+.whatsapp-float:hover { transform: scale(1.1); }
+
+/* Animaciones */
+.fade-up { opacity: 0; transform: translateY(40px); animation: moveUp 1s forwards; }
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+
+@keyframes moveUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+    .hero h1 { font-size: 2.8rem; }
+    .navbar { padding: 15px 5%; }
+    .nav-links { display: none; }
+    .feature-card { flex-direction: column; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .booking-card { padding: 30px; }
+}

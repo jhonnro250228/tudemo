@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración técnica y SEO básico -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamid barber shop | Estilo Urbano en Bilbao</title>
+    <!-- Estilos y Librerías Externas -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="logo">HAMID <span>BARBER</span></div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#funcionales">Funcionales</a></li>
+            <li><a href="#reservas">Reservas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <h1 class="reveal">Hamid barber shop</h1>
+            <p class="reveal delay-1">Cortes de precisión y estilo auténtico en el corazón de Abando.</p>
+            <div class="hero-btns reveal delay-2">
+                <a href="#reservas" class="btn-primary">Reservar Ahora</a>
+                <a href="#servicios" class="btn-outline">Ver Servicios</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Servicios -->
+    <section id="servicios" class="services">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-scissors"></i>
+                <h3>Corte Urbano</h3>
+                <p>Fades, degradados y las últimas tendencias en estilismo masculino.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-razor"></i>
+                <h3>Afeitado Tradicional</h3>
+                <p>Cuidado de barba con navaja y productos premium.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-user-tie"></i>
+                <h3>Pack Executive</h3>
+                <p>Corte completo + tratamiento de barba + lavado relax.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Funcionales / Por qué elegirnos -->
+    <section id="funcionales" class="features">
+        <div class="features-content">
+            <h2 class="section-title">¿Por qué Hamid?</h2>
+            <div class="features-list">
+                <div class="feature-item"><i class="fas fa-star"></i> <span>Atención al detalle</span></div>
+                <div class="feature-item"><i class="fas fa-clock"></i> <span>Puntualidad garantizada</span></div>
+                <div class="feature-item"><i class="fas fa-gem"></i> <span>Productos de alta gama</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Reservas -->
+    <section id="reservas" class="booking">
+        <div class="booking-wrapper">
+            <div class="booking-text">
+                <h2>Reserva tu Cita</h2>
+                <p>Selecciona tu servicio y elige el día. Te confirmaremos por WhatsApp de inmediato.</p>
+            </div>
+            <form id="whatsappForm">
+                <input type="text" id="name" placeholder="Tu Nombre Completo" required>
+                <select id="service" required>
+                    <option value="">¿Qué servicio buscas?</option>
+                    <option value="Corte Degradado">Corte / Fade</option>
+                    <option value="Arreglo de Barba">Barba</option>
+                    <option value="Corte + Barba">Combo Completo</option>
+                </select>
+                <input type="date" id="date" required>
+                <button type="submit" class="btn-submit">Enviar Reserva por WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="contact">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Visítanos</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Kalea Manuel Allende, 19, 48010 Bilbao</p>
+                <p><i class="fas fa-phone"></i> 663 40 28 11</p>
+                <p><i class="fas fa-calendar-alt"></i> Lun - Sáb: 10:00 - 20:00</p>
+            </div>
+            <div class="contact-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.378!2d-2.939!3d43.26!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4ad7!2sKalea%20Manuel%20Allende%2C%2019!5e0!3m2!1ses!2ses!4v1620000000000" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón Flotante WhatsApp -->
+    <a href="https://wa.me/34663402811" class="wpp-btn" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
