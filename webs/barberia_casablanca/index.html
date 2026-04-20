@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbería Casablanca | Estilo Clásico y Moderno en Bilbao</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">CASABLANCA<span>BARBERÍA</span></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#experiencia">Experiencia</a></li>
+            <li><a href="#reservas">Reservas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section id="inicio" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="reveal">Tradición y Vanguardia</span>
+            <h1 class="reveal delay-1">Barbería Casablanca</h1>
+            <p class="reveal delay-2">Donde cada corte es una obra de arte y cada cliente, una leyenda.</p>
+            <div class="hero-btns reveal delay-3">
+                <a href="#reservas" class="btn-primary">Reserva tu Cita</a>
+                <a href="#servicios" class="btn-outline">Ver Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="services">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-cut"></i>
+                <h3>Corte Clásico</h3>
+                <p>Estilos atemporales y modernos, adaptados a tu personalidad.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-scissors"></i>
+                <h3>Afeitado Tradicional</h3>
+                <p>Experiencia de afeitado con toalla caliente y navaja, puro lujo.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-beard"></i>
+                <h3>Arreglo de Barba</h3>
+                <p>Diseño y cuidado profesional para una barba impecable.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-spa"></i>
+                <h3>Tratamientos Capilares</h3>
+                <p>Hidratación y fortalecimiento para un cabello sano y fuerte.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiencia" class="features">
+        <div class="feature-item">
+            <i class="fas fa-award"></i>
+            <h4>Maestros Barberos</h4>
+            <p>Expertos con años de experiencia y pasión por el detalle.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-chair"></i>
+            <h4>Ambiente Exclusivo</h4>
+            <p>Un espacio diseñado para tu confort y relajación.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-gem"></i>
+            <h4>Productos Premium</h4>
+            <p>Solo las mejores marcas para el cuidado de tu cabello y barba.</p>
+        </div>
+    </section>
+
+    <section id="reservas" class="booking">
+        <div class="booking-card">
+            <h2>Agenda tu Momento</h2>
+            <p>Selecciona tu servicio y te confirmaremos la cita vía WhatsApp.</p>
+            <form id="bookingForm">
+                <input type="text" id="clientName" placeholder="Tu Nombre Completo" required>
+                <select id="selectedService" required>
+                    <option value="" disabled selected>Elige tu Servicio</option>
+                    <option value="Corte Clásico">Corte Clásico</option>
+                    <option value="Afeitado Tradicional">Afeitado Tradicional</option>
+                    <option value="Arreglo de Barba">Arreglo de Barba</option>
+                    <option value="Corte + Barba">Corte + Barba</option>
+                    <option value="Tratamiento Capilar">Tratamiento Capilar</option>
+                </select>
+                <input type="date" id="bookingDate" required>
+                <button type="submit" class="btn-submit">Reservar</button>
+            </form>
+            <ul class="schedule">
+                <li><span>Lunes - Viernes:</span> 10:00 – 20:00</li>
+                <li><span>Sábado:</span> 09:00 – 14:00</li>
+                <li><span>Domingo:</span> Cerrado</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Encuéntranos</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Azurleku Auz., 17, bajo, 48004 Bilbao, Bizkaia</p>
+                <p><i class="fas fa-phone"></i> 946 03 84 74</p>
+                <p><i class="fas fa-envelope"></i> info@barberiacasablanca.com</p>
+                <div class="social-links">
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.539304910606!2d-2.932680123793749!3d43.2576970713926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fd2022f518b%3A0x400f201c1074120!2sAzurleku%20Auz.%2C%2017%2C%2048004%20Bilbao%2C%20Bizkaia%2C%20Spain!5e0!3m2!1sen!2ses!4v1713500000000!5m2!1sen!2ses" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/34946038474" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

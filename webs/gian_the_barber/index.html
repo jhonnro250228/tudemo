@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gian The Barber | Barbería & Estilo en Bilbao</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">GIAN<span>THE BARBER</span></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#funcionales">Experiencia</a></li>
+            <li><a href="#reservas">Reservas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section id="inicio" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="reveal">Urban Style & Precision</span>
+            <h1 class="reveal delay-1">GIAN THE BARBER</h1>
+            <p class="reveal delay-2">Elevamos tu estilo con técnicas de vanguardia en el corazón de Abando, Bilbao.</p>
+            <div class="hero-btns reveal delay-3">
+                <a href="#reservas" class="btn-primary">Reservar Cita</a>
+                <a href="#servicios" class="btn-outline">Nuestros Cortes</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="services">
+        <h2 class="section-title">Servicios de Autor</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="card-icon"><i class="fas fa-cut"></i></div>
+                <h3>Corte Signature</h3>
+                <p>Degradados (fades) perfectos y cortes clásicos adaptados a tu rostro.</p>
+            </div>
+            <div class="service-card">
+                <div class="card-icon"><i class="fas fa-razor"></i></div>
+                <h3>Perfilado de Barba</h3>
+                <p>Ritual de afeitado tradicional con navaja y toalla caliente.</p>
+            </div>
+            <div class="service-card">
+                <div class="card-icon"><i class="fas fa-user-tie"></i></div>
+                <h3>Pack Executive</h3>
+                <p>Corte premium, arreglo de barba y tratamiento capilar revitalizante.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="funcionales" class="features">
+        <div class="feature-item">
+            <i class="fas fa-clock"></i>
+            <h4>Horario Flexible</h4>
+            <p>Atención adaptada a tu ritmo de vida.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-star"></i>
+            <h4>Calidad 5 Estrellas</h4>
+            <p>Productos de alta gama para el cuidado masculino.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <h4>Ubicación Céntrica</h4>
+            <p>Fácil acceso en Areiltza Doktorearen Zumarkalea.</p>
+        </div>
+    </section>
+
+    <section id="reservas" class="booking">
+        <div class="booking-card">
+            <h2>Agenda tu Visita</h2>
+            <p>Selecciona tu tratamiento.</p>
+            <form id="bookingForm">
+                <input type="text" id="clientName" placeholder="Tu Nombre Completo" required>
+                <select id="selectedService" required>
+                    <option value="" disabled selected>Servicio deseado</option>
+                    <option value="Corte de Pelo">Corte Signature</option>
+                    <option value="Arreglo de Barba">Perfilado de Barba</option>
+                    <option value="Servicio Completo">Pack Executive</option>
+                </select>
+                <input type="date" id="bookingDate" required>
+                <button type="submit" class="btn-submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <div class="contact-grid">
+            <div class="contact-details">
+                <h3>Visítanos</h3>
+                <p><i class="fas fa-location-dot"></i> Areiltza Doktorearen Zumarkalea, 47, 48010 Bilbao</p>
+                <p><i class="fas fa-phone"></i> 687 36 15 98</p>
+                <p><i class="fas fa-clock"></i> L-V: 10:00 - 20:00 | S: 09:30 - 14:00</p>
+            </div>
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.4187!2d-2.9431!3d43.2618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fd741!2sAreiltza%20Doktorearen%20Zumarkalea%2C%2047%2C%2048010%20Bilbao!5e0!3m2!1ses!2ses!4v1713500000000" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/34687361598" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <script src="script.js"></script>
+</body>
+</html>
