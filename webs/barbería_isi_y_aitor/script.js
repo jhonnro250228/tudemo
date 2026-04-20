@@ -19,10 +19,19 @@ document.getElementById('whatsappForm').addEventListener('submit', function(e) {
     window.open(whatsappUrl, '_blank');
 });
 
+// Lógica para el Menú Móvil (Abrir/Cerrar)
+const menuToggle = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
 // Implementación de scroll suave (Smooth Scroll) para los enlaces de navegación interna
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault(); // Evita el salto brusco
+        navLinks.classList.remove('active'); // Cierra el menú en móvil al hacer click
         document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
         });
