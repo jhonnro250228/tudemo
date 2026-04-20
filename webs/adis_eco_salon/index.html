@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adis Eco Salon | Peluquería Orgánica en Bilbao</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">ADIS<span>ECO SALON</span></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#reservas">Reservas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section id="inicio" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="reveal">Belleza Consciente y Sostenible</span>
+            <h1 class="reveal delay-1">Adis Eco Salon</h1>
+            <p class="reveal delay-2">Tu espacio de peluquería y estética orgánica en el corazón de Bilbao. Cuidamos de ti y del planeta.</p>
+            <a href="#reservas" class="btn-hero reveal delay-3">Reservar Experiencia</a>
+        </div>
+    </section>
+
+    <section id="servicios" class="services">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-leaf"></i>
+                <h3>Coloración Orgánica</h3>
+                <p>Tintes sin amoníaco con extractos botánicos para un brillo natural.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-cut"></i>
+                <h3>Corte de Autor</h3>
+                <p>Diseños personalizados que resaltan tu esencia y facciones.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-spa"></i>
+                <h3>Tratamientos Eco</h3>
+                <p>Hidratación profunda con productos 100% biodegradables.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="reservas" class="booking">
+        <div class="booking-container">
+            <div class="booking-info">
+                <h2>Reserva tu Cita</h2>
+                <p>Selecciona tu servicio y nos pondremos en contacto contigo vía WhatsApp para confirmar disponibilidad.</p>
+                <ul class="schedule">
+                    <li><span>Lunes - Viernes:</span> 09:30 – 19:30</li>
+                    <li><span>Sábado:</span> 09:30 – 14:00</li>
+                    <li><span>Domingo:</span> Cerrado</li>
+                </ul>
+            </div>
+            <form id="bookingForm" class="booking-form">
+                <input type="text" id="clientName" placeholder="Nombre completo" required>
+                <select id="selectedService" required>
+                    <option value="" disabled selected>Selecciona un servicio</option>
+                    <option value="Corte y Peinado">Corte y Peinado</option>
+                    <option value="Coloración Orgánica">Coloración Orgánica</option>
+                    <option value="Tratamiento Hidratante">Tratamiento Hidratante</option>
+                    <option value="Estética General">Estética General</option>
+                </select>
+                <input type="date" id="bookingDate" required>
+                <button type="submit" class="btn-submit">Solicitar Cita vía WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <div class="contact-grid">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.343547464049!2d-2.9419168!3d43.2611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fd0782e4433%3A0xc078864f1d620584!2sUrkixo%20Zumarkalea%2C%2061%2C%2048010%20Bilbao!5e0!3m2!1ses!2ses!4v1713500000000!5m2!1ses!2ses" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="contact-details">
+                <h3>Ubicación y Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Urkixo Zumarkalea, 61, Abando, 48010 Bilbao</p>
+                <p><i class="fas fa-phone"></i> 652 34 76 50</p>
+                <p><i class="fas fa-envelope"></i> hola@adisecosalon.com</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/34652347650" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
