@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carnicería Arriola | Carne Selecta y Productos Gourmet en Bilbao</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- NAVEGACIÓN Y LOGOTIPO -->
+    <header>
+        <nav>
+            <div class="logo">ARRIOLA <span>CARNICERÍA</span></div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#reservas">Pedidos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- SECCIÓN HERO / INICIO -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <span class="subtitle">Calidad Superior desde Bilbao</span>
+            <h1>Tradición en cada corte</h1>
+            <p>Selección premium de carnes del país y productos artesanos en el corazón de Abando.</p>
+            <a href="#reservas" class="btn-primary">Hacer Pedido</a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE SERVICIOS -->
+    <section id="servicios" class="services">
+        <h2 class="section-title">Nuestra Selección</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-drumstick-bite"></i>
+                <h3>Carnes Selectas</h3>
+                <p>Ternera de primera, cordero lechal y cortes ibéricos de máxima calidad.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-award"></i>
+                <h3>Embutidos Artesanos</h3>
+                <p>Variedad de embutidos locales y curados seleccionados por maestros carniceros.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-shopping-basket"></i>
+                <h3>Gourmet & Delicatessen</h3>
+                <p>Productos de la tierra, quesos y conservas para acompañar tus mejores platos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE RESERVAS (PRE-PEDIDO WHATSAPP) -->
+    <section id="reservas" class="reservations">
+        <div class="container">
+            <div class="res-box">
+                <h2>Encarga tu Pedido</h2>
+                <p>Preparamos tu encargo para que solo tengas que pasar a recogerlo.</p>
+                <form id="reserva-form">
+                    <input type="text" id="nombre" placeholder="Tu nombre" required>
+                    <select id="servicio-select" required>
+                        <option value="" disabled selected>Tipo de pedido</option>
+                        <option value="Carne Fresca">Carne Fresca (Cortes variados)</option>
+                        <option value="Lote Semanal">Lote Familiar Semanal</option>
+                        <option value="Embutidos/Quesos">Tabla de Embutidos/Quesos</option>
+                    </select>
+                    <div class="form-row">
+                        <input type="date" id="fecha" required title="Fecha de recogida">
+                        <input type="time" id="hora" required title="Hora aproximada">
+                    </div>
+                    <textarea id="detalles" placeholder="Detalla tu pedido (ej: 1kg de chuletón, 500gr de lomo...)" rows="3"></textarea>
+                    <button type="submit" class="btn-reserva">Enviar <i class="fab fa-whatsapp"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE CONTACTO Y GOOGLE MAPS -->
+    <section id="contacto" class="contact">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Dónde Estamos</h2>
+                <p><i class="fas fa-map-marker-alt"></i> Rodríguez Arias K., 65, 48013 Bilbao</p>
+                <p><i class="fas fa-phone"></i> 747 41 43 58</p>
+                <div class="horario">
+                    <h3>Horario de Atención</h3>
+                    <ul>
+                        <li><span>Lunes - Viernes:</span> 09:00 – 14:00 | 17:00 – 20:00</li>
+                        <li><span>Sábado:</span> 09:00 – 14:30</li>
+                        <li><span>Domingo:</span> Cerrado</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.7876823438257!2d-2.946323423126839!3d43.2618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fd7f6775f0b%3A0xe54668b5774e6c1!2sC.%20Rodr%C3%ADguez%20Arias%2C%2065%2C%20Abando%2C%2048013%20Bilbo%2C%20Bizkaia!5e0!3m2!1ses!2ses!4v1713650000000!5m2!1ses!2ses" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Carnicería Arriola Bilbao. Calidad artesana en Abando.</p>
+            <div class="socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/34747414358" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- SCRIPTS DE FUNCIONALIDAD -->
+    <script src="script.js"></script>
+</body>
+</html>
