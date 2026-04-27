@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller Mecanico Urbicar | Calidad Premium</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+        <div class="loader-text">INICIALIZANDO EXPERIENCIA</div>
+    </div>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header>
+        <nav>
+            <a href="#inicio" class="logo">TALLER<span>MECANICO URBICAR</span></a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria">Servicios</a></li>
+                <li><a href="#reseñas">Reseñas</a></li>
+                <li><a href="#contacto">Visítanos</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div id="canvas-container"></div>
+        <div class="video-background-container">
+            <video id="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1486006396193-471068589dcb?auto=format&fit=crop&w=1600&q=80"></video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <span class="reveal-text">Potencia & Precisión</span>
+            <h1 class="reveal-text" data-text="Cuidado para tu vehículo">Cuidado para tu vehículo</h1>
+            <p class="reveal-text">Mantenimiento integral y reparaciones de alta calidad para garantizar tu seguridad en carretera.</p>
+            
+        </div>
+    </section>
+
+    <section id="servicios" class="services">
+        <h2 class="section-title">Nuestra Propuesta</h2>
+        <div class="services-grid">
+            <div class="service-card animate-on-scroll">
+                <i class="fas fa-tools"></i>
+                <h3>Mecánica</h3>
+                <p>Especialistas en diagnósticos y reparaciones complejas.</p>
+            </div>
+            <div class="service-card animate-on-scroll">
+                <i class="fas fa-car-side"></i>
+                <h3>Lava Autos</h3>
+                <p>Limpieza profunda con acabados de alta gama.</p>
+            </div>
+            <div class="service-card animate-on-scroll">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Garantía</h3>
+                <p>Utilizamos repuestos originales para mayor durabilidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="gallery">
+        <h2 class="section-title">Nuestro Trabajo</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item animate-on-scroll">
+                <img src="img/gal_1.jpg" alt="Taller Mecanico Urbicar item 1">
+                <div class="overlay"><span>Ver Detalle</span></div>
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                <img src="img/gal_2.jpg" alt="Taller Mecanico Urbicar item 2">
+                <div class="overlay"><span>Ver Detalle</span></div>
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                <img src="img/gal_3.jpg" alt="Taller Mecanico Urbicar item 3">
+                <div class="overlay"><span>Ver Detalle</span></div>
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                <img src="img/gal_4.jpg" alt="Taller Mecanico Urbicar item 4">
+                <div class="overlay"><span>Ver Detalle</span></div>
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                <img src="img/gal_5.jpg" alt="Taller Mecanico Urbicar item 5">
+                <div class="overlay"><span>Ver Detalle</span></div>
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                <img src="img/gal_6.jpg" alt="Taller Mecanico Urbicar item 6">
+                <div class="overlay"><span>Ver Detalle</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reseñas" class="reviews">
+        <h2 class="section-title">Experiencias de Clientes</h2>
+        <div class="reviews-carousel">
+            <div class="reviews-track">
+                
+                <div class="review-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Excelente atención, muy recomendado."</p>
+                    <span class="review-author">- Juan P.</span>
+                </div>
+                <div class="review-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"El mejor lugar de la zona, calidad premium."</p>
+                    <span class="review-author">- Marta L.</span>
+                </div>
+                <div class="review-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Servicio impecable y muy profesional."</p>
+                    <span class="review-author">- Pedro S.</span>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="reservas" class="reservations">
+        <div class="res-container">
+            <div class="res-info">
+                <h2>Agenda tu Cita</h2>
+                <p>Asegura tu mesa o servicio ahora. Vive una experiencia gastronómica inigualable en un ambiente exclusivo.</p>
+            </div>
+            <div class="res-form-box">
+                <form id="reserva-form">
+                    <input type="text" id="nombre-res" placeholder="Nombre Completo" required>
+                    <input type="datetime-local" id="fecha-res" required>
+                    <textarea id="mensaje-res" placeholder="Notas adicionales o servicios de interés..."></textarea>
+                    <button type="submit" class="btn-reserva">Reservar Ahora <i class="fab fa-whatsapp"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="contacto" class="contact">
+        <h2 class="section-title animate-on-scroll">Encuéntranos</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="contact-item animate-on-scroll">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div><h3>Ubicación</h3><p>Gudarien Hiribidea, 11, Urbi, 48970 Urbi, Bizkaia, Spain</p></div>
+                </div>
+                <div class="contact-item animate-on-scroll">
+                    <i class="fas fa-phone"></i>
+                    <div><h3>Teléfono</h3><p>+34623571507</p></div>
+                </div>
+                <div class="horario">
+                    <h3>Nuestro Horario</h3>
+                    <p>Lunes a Sábado: 10:00 - 20:00</p>
+                    <p>Domingos: Cerrado</p>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://maps.google.com/maps?q=Gudarien%20Hiribidea%2C%2011%2C%20Urbi%2C%2048970%20Urbi%2C%20Bizkaia%2C%20Spain&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Taller Mecanico Urbicar. Calidad y compromiso en Bilbao.</p>
+            <div class="footer-socials">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/34623571507" class="whatsapp-float" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+    </a>
+
+    <script src="script.js?v=1777296093"></script>
+</body>
+</html>
