@@ -378,3 +378,33 @@ footer {
     .services, .gallery, .contact, .reservations { padding: 60px 5%; }
 }
 
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
+    .services, .contact, .gallery, .reviews { padding: 60px 5%; }
+
+    /* Ajustes para el carrusel de reseñas en móvil */
+    .reviews {
+        /* Asegura que solo una tarjeta de reseña sea visible a la vez, ocultando las demás */
+        overflow-x: hidden;
+    }
+
+    .reviews-grid {
+        /* Cambia a flex para el comportamiento de carrusel */
+        display: flex;
+        /* Evita que las tarjetas de reseña se envuelvan a la siguiente línea */
+        flex-wrap: nowrap;
+        /* Elimina el espacio entre las tarjetas para un deslizamiento suave */
+        gap: 0;
+        /* Asegura que el contenedor flex ocupe todo el ancho disponible */
+        width: 100%;
+        /* Añade una transición para un deslizamiento suave al cambiar de tarjeta */
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .review-card {
+        /* Evita que las tarjetas se encojan y asegura que cada una ocupe el 100% del ancho del contenedor */
+        flex-shrink: 0;
+        width: 100%;
+        /* Incluye el padding y el borde en el ancho total del elemento */
+        box-sizing: border-box;
+    }
