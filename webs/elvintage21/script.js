@@ -9,10 +9,10 @@ container.appendChild(renderer.domElement);
 
 // Objeto 3D - Un Toroide (Dona) elegante que parece una joya/accesorio
 const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
-const material = new THREE.MeshPhongMaterial({ 
-    color: 0xc5a059, 
+const material = new THREE.MeshPhongMaterial({
+    color: 0xc5a059,
     shininess: 100,
-    wireframe: true 
+    wireframe: true
 });
 const torusKnot = new THREE.Mesh(geometry, material);
 scene.add(torusKnot);
@@ -38,11 +38,11 @@ function animate() {
     requestAnimationFrame(animate);
     torusKnot.rotation.x += 0.005;
     torusKnot.rotation.y += 0.005;
-    
+
     // Suavizado de movimiento con mouse
     torusKnot.position.x += (mouseX - torusKnot.position.x) * 0.05;
     torusKnot.position.y += (-mouseY - torusKnot.position.y) * 0.05;
-    
+
     renderer.render(scene, camera);
 }
 animate();
@@ -83,7 +83,29 @@ window.addEventListener('scroll', () => {
 });
 
 // 5. MENU MOBILE
-document.getElementById('mobile-menu').addEventListener('click', () => {
-    const nav = document.querySelector('.nav-links');
-    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-});
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Evita que el clic se propague al document y lo cierre inmediatamente
+        navLinks.classList.toggle('active');
+    });
+
+    // Cerrar el menú automáticamente al hacer clic en un enlace
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Cerrar al hacer clic fuera del menú o de la burguer
+    document.addEventListener('click', (e) => {
+        const isClickInsideMenu = navLinks.contains(e.target);
+        const isClickOnToggle = menuToggle.contains(e.target);
+
+        if (!isClickInsideMenu && !isClickOnToggle && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+        }
+    });
+}

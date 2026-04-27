@@ -57,6 +57,8 @@ nav {
     font-size: 1.5rem;
     cursor: pointer;
     display: none;
+    position: relative;
+    z-index: 1001; /* Asegura que esté por encima de otros elementos */
 }
 
 .logo {
@@ -328,7 +330,35 @@ footer {
 /* Responsive */
 @media (max-width: 768px) {
     .hero-content h1 { font-size: 2.5rem; }
-    .nav-links { display: none; }
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Se posiciona justo debajo del header */
+        left: 0;
+        width: 100%;
+        background: rgba(26, 26, 26, 0.98);
+        max-height: 0; /* Altura inicial cero para el efecto de despliegue */
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out, padding 0.4s ease;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        max-height: 400px; /* Suficiente para albergar los enlaces */
+        padding: 1.5rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links a { 
+        margin: 1rem 0; 
+        margin-left: 0; 
+        display: block;
+    }
     .menu-toggle { display: block; }
     .services, .contact, .gallery, .reviews { padding: 60px 5%; }
+
+    .reviews-grid {
+        grid-template-columns: 1fr; /* Forzamos una sola columna para evitar desbordamiento */
+    }
 }

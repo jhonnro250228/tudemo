@@ -235,7 +235,8 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 }
 
 .review-card {
-    min-width: 100%;
+    width: 100%; /* Asegura que cada tarjeta ocupe el 100% del ancho del carrusel */
+    flex-shrink: 0; /* Evita que las tarjetas se encojan */
     padding: 60px 40px;
     text-align: center;
     background: #fff;
@@ -376,5 +377,11 @@ footer {
     }
     .nav-links a { margin: 1.5rem 0; font-size: 1.1rem; }
     .services, .gallery, .contact, .reservations { padding: 60px 5%; }
+
+     .review-card {
+        padding: 40px 20px; /* Reducimos el padding interno para ganar espacio */
+    }
+
+    .review-card p { font-size: 1.1rem; } /* Ajustamos el texto para que no sea tan invasivo */
 }
 
