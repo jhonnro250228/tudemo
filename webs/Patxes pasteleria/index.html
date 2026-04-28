@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patxes Pastelería | Artesanía en Bilbao</title>
+    <meta name="description" content="Descubre la mejor pastelería y panadería artesanal en el corazón de Bilbao. Calidad, tradición y sabor en Heros Kalea, 15.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="logo">Patxes<span>Pastelería</span></div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#reservas">Reservas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content fade-in">
+            <h1>Tradición que se deshace en tu boca</h1>
+            <p>Panadería y Pastelería artesanal en Abando, Bilbao.</p>
+            <a href="#servicios" class="btn-primary">Ver Delicias</a>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="services">
+        <h2 class="section-title">Nuestras Especialidades</h2>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Pan Artesanal">
+                <h3>Masa Madre</h3>
+                <p>Panes de fermentación lenta con harinas seleccionadas.</p>
+            </div>
+            <div class="service-card reveal">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80" alt="Pastelería Fina">
+                <h3>Pastelería Fina</h3>
+                <p>Creaciones dulces que son verdaderas obras de arte.</p>
+            </div>
+            <div class="service-card reveal">
+                <img src="cafe.jpg" alt="Cafetería de Especialidad">
+                <h3>Café & Brunch</h3>
+                <p>El acompañamiento perfecto para tus mañanas en Bilbao.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservas -->
+    <section id="reservas" class="reservations">
+        <div class="res-container reveal">
+            <h2>Haz tu Pedido o Reserva</h2>
+            <p>Asegura tus productos favoritos o reserva una mesa para disfrutar con nosotros.</p>
+            <form id="reserva-form">
+                <input type="text" placeholder="Nombre completo" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <select>
+                    <option value="pedido">Pedido de productos</option>
+                    <option value="mesa">Reserva de mesa</option>
+                    <option value="evento">Evento especial</option>
+                </select>
+                <textarea placeholder="Detalles de tu solicitud..."></textarea>
+                <button type="submit" class="btn-secondary">Enviar Solicitud</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contacto y Mapa -->
+    <section id="contacto" class="contact">
+        <div class="contact-container reveal">
+            <div class="contact-info">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Visitanos</h2>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Heros Kalea, 15, Abando, 48009 Bilbao, Bizkaia</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>747 42 81 03</p>
+                    </div>
+                </div>
+                <div class="hours-card">
+                    <h3>Nuestros Horarios</h3>
+                    <div class="hour-row"><span>Lunes - Viernes</span> <span>09:00 – 20:00</span></div>
+                    <div class="hour-row"><span>Sábado</span> <span>09:00 – 20:00</span></div>
+                    <div class="hour-row closed"><span>Domingo y Festivos</span> <span>Cerrado</span></div>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2902.774431526487!2d-2.9351239!3d43.2666016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fd2df39c55b%3A0xc3f58a36c843063!2sHeros%20Kalea%2C%2015%2C%20Abando%2C%2048009%20Bilbo%2C%20Bizkaia!5e0!3m2!1ses!2ses!4v1710000000000!5m2!1ses!2ses" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Patxes Pastelería. Todos los derechos reservados.</p>
+        <div class="socials">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+    </footer>
+
+    <!-- Botón WhatsApp Flotante -->
+    <a href="https://wa.me/34747428103" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
