@@ -376,12 +376,11 @@ footer {
         right: 0; /* Desplegar desde la derecha */
     }
     .nav-links a { margin: 1.5rem 0; font-size: 1.1rem; }
-    .services, .gallery, .contact, .reservations { padding: 60px 5%; }
+    .services, .gallery, .reviews, .contact, .reservations { padding: 60px 5%; }
 
     .review-card {
-        padding: 40px 20px; /* Reducimos el padding interno para ganar espacio */
+        padding: 30px 20px; 
     }
 
-    .review-card p { font-size: 1.1rem; } /* Ajustamos el texto para que no sea tan invasivo */
+    .review-card p { font-size: 1rem; line-height: 1.4; margin-bottom: 20px; }
 }
-
