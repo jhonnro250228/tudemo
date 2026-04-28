@@ -377,11 +377,10 @@ footer {
     }
     .nav-links a { margin: 1.5rem 0; font-size: 1.1rem; }
     .services, .gallery, .reviews, .contact, .reservations { padding: 60px 5%; }
-
+    .reviews-carousel { width: 100%; max-width: none; } /* Asegura el ancho completo en móviles */
     .review-card {
         padding: 30px 20px; 
     }
-
     .review-card p { font-size: 1rem; line-height: 1.4; margin-bottom: 20px; }
 }
 
