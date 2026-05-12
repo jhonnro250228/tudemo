@@ -2,7 +2,14 @@ window.addEventListener('DOMContentLoaded', () => {
     // 0. INICIALIZACIÓN DE PLUGINS
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-    ScrollTrigger.config({ limitCallbacks: true });
+    // Deshabilitamos la normalización para permitir que el navegador móvil 
+    // gestione de forma nativa la ocultación/aparición de la barra de direcciones.
+
+    ScrollTrigger.config({ 
+        limitCallbacks: true,
+        ignoreMobileResize: true, // Evita saltos visuales cuando la barra de direcciones aparece/desaparece
+        autoRefreshEvents: "visibilitychange,DOMContentLoaded,load" 
+    });
 
     // 1. BACKGROUND 3D CON THREE.JS
     const scene = new THREE.Scene();
@@ -81,6 +88,9 @@ window.addEventListener('DOMContentLoaded', () => {
         const canvas = document.getElementById('hero-canvas');
         if (canvas) {
             const context = canvas.getContext('2d');
+            // Configuración de renderizado de alta calidad
+            context.imageSmoothingEnabled = true;
+            context.imageSmoothingQuality = 'high';
             const frameCount = parseInt("0") || 90; // Fallback a 90 si no se detecta
 
             // Generar rutas de frames (asumiendo formato frames/frame_0001.webp)
@@ -176,14 +186,13 @@ window.addEventListener('DOMContentLoaded', () => {
                 // Esto corrige el error donde los frames desaparecían al cargar en móvil.
                 if (renderData.w !== 0 && w === lastWidth && Math.abs(h - lastHeight) < 110) return;
                 
-                // Optimización extrema: Limitamos DPR a 1.5 en móviles para reducir calor y consumo de batería
+                // Limitamos DPR para rendimiento
                 const dpr = w < 768 ? 1.5 : Math.min(window.devicePixelRatio || 1, 2);
                 lastWidth = w; lastHeight = h;
 
                 canvas.width = w * dpr;
                 canvas.height = h * dpr;
-                canvas.style.width = w + "px";
-                canvas.style.height = h + "px";
+                // Eliminamos canvas.style.height fijo para que el CSS (100dvh) lo gestione
 
                 context.setTransform(dpr, 0, 0, dpr, 0, 0);
 
@@ -206,8 +215,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 scrollTrigger: {
                     trigger: "#inicio",
                     start: "top top",
-                    end: "+=200%", // Duración del efecto de scroll en el Hero
-                    scrub: 0.5, // Menor valor de scrub significa menos cálculos intermedios para la CPU
+                    end: "+=300%", // Mayor recorrido de scroll para una transición más pausada y lujosa
+                    scrub: 1.5, // Inercia aumentada para un movimiento cinemático con "peso" premium
                     pin: true, // Bloqueamos la sección para que pasen los frames
                     anticipatePin: 1, // Evita el salto inicial en iOS
                     invalidateOnRefresh: true,
@@ -217,7 +226,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
             framesTL.to(sequence, {
                 frame: Math.max(0, frameCount - 1),
-                snap: "frame",
                 ease: "none",
                 onUpdate: render,
                 duration: 10

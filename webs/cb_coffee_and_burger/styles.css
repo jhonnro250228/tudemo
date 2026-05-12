@@ -162,7 +162,8 @@ nav {
 }
 
 .hero {
-    height: 100vh;
+    height: 100vh; /* Fallback */
+    height: 100dvh; /* Altura dinámica que se ajusta a la barra de direcciones */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -189,9 +190,10 @@ nav {
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    will-change: transform;
+    will-change: transform, opacity;
     filter: brightness(0.9);
-    image-rendering: high-quality;
+    /* Mejora la nitidez en algunos navegadores móviles */
+    image-rendering: -webkit-optimize-contrast;
 }
 
 #canvas-container {
@@ -291,7 +293,7 @@ section {
     font-size: 3rem;
     margin-top: -3vh;
     /* Empuja el título másabajo */
-    margin-bottom: 5rem;
+    margin-bottom: 1rem;
     /* Más espacio entre el título y las tarjetas */
     letter-spacing: -1px;
 }
