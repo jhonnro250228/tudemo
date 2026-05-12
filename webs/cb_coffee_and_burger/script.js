@@ -73,6 +73,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // 1.2 ANIMACIÓN DE SECUENCIA DE IMÁGENES (APPLE STYLE)
     if (useCanvasSequence) {
+        // Ocultar el video de fondo inmediatamente si estamos usando la secuencia de canvas
+        const videoBg = document.querySelector('.video-background-container');
+        if (videoBg) {
+            videoBg.style.display = 'none';
+        }
         const canvas = document.getElementById('hero-canvas');
         if (canvas) {
             const context = canvas.getContext('2d');
@@ -132,16 +137,11 @@ window.addEventListener('DOMContentLoaded', () => {
                             firstFrameLoaded = true;
                             resizeCanvas();
                             render(true);
-                            // Hacemos el canvas visible inmediatamente después de renderizar el primer frame
-                            canvas.style.opacity = "1";
-
                             // Asegurar que la experiencia inicie correctamente
                             setTimeout(startExperience, 150);
                             window.dispatchEvent(new Event('framesReady'));
-                            
-                            // Eliminar interferencia: Ocultamos el video/poster si hay frames
-                            const videoBg = document.querySelector('.video-background-container');
-                            if (videoBg) videoBg.style.display = 'none';
+                            // Hacemos el canvas visible inmediatamente después de renderizar el primer frame
+                            canvas.style.opacity = "1";
                         };
                         if (img.complete) img.onload();
                     }
