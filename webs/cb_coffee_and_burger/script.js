@@ -85,6 +85,8 @@ window.addEventListener('DOMContentLoaded', () => {
             const sequence = { frame: 0 }; // Aseguramos base 0
             let lastRenderedFrame = -1;
             let renderData = { x: 0, y: 0, w: 0, h: 0 };
+            let lastWidth = 0;
+            let lastHeight = 0;
 
             // Crear grano de película animado para realismo cinematográfico
             const grainOverlay = document.createElement('div');
@@ -136,6 +138,10 @@ window.addEventListener('DOMContentLoaded', () => {
                             // Asegurar que la experiencia inicie correctamente
                             setTimeout(startExperience, 150);
                             window.dispatchEvent(new Event('framesReady'));
+                            
+                            // Eliminar interferencia: Ocultamos el video/poster si hay frames
+                            const videoBg = document.querySelector('.video-background-container');
+                            if (videoBg) videoBg.style.display = 'none';
                         };
                         if (img.complete) img.onload();
                     }
@@ -162,9 +168,15 @@ window.addEventListener('DOMContentLoaded', () => {
             }
 
             function resizeCanvas() {
-                const dpr = window.devicePixelRatio || 1;
                 const w = window.innerWidth;
                 const h = window.innerHeight;
+
+                // Evitar destello: No redibujar si el cambio es solo por la barra de navegación móvil
+                if (lastWidth !== 0 && w === lastWidth && Math.abs(h - lastHeight) < 110) return;
+                
+                // Optimización extrema: Limitamos DPR a 1.5 en móviles para reducir calor y consumo de batería
+                const dpr = w < 768 ? 1.5 : Math.min(window.devicePixelRatio || 1, 2);
+                lastWidth = w; lastHeight = h;
 
                 canvas.width = w * dpr;
                 canvas.height = h * dpr;
@@ -193,8 +205,9 @@ window.addEventListener('DOMContentLoaded', () => {
                     trigger: "#inicio",
                     start: "top top",
                     end: "+=200%", // Duración del efecto de scroll en el Hero
-                    scrub: 3, // Aumentado para un scroll más suave y elegante en las frames
+                    scrub: 0.5, // Menor valor de scrub significa menos cálculos intermedios para la CPU
                     pin: true, // Bloqueamos la sección para que pasen los frames
+                    anticipatePin: 1, // Evita el salto inicial en iOS
                     invalidateOnRefresh: true,
                     refreshPriority: 1
                 }
