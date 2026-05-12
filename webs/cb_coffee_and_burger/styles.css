@@ -445,7 +445,8 @@ section {
 /* Reviews Premium Carousel */
 .reviews {
     /* Imagen de fondo con overlay oscuro para resaltar el texto */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/hamburguesa.png') !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./img/hamburguesa.png') !important;
+    background-color: #121212; /* Color de respaldo por si la imagen falla */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
