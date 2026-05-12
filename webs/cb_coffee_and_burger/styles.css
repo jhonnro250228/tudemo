@@ -1,0 +1,778 @@
+:root {
+    --gold: #FFD700;
+    --dark: #121212;
+    --light: #f9f7f2;
+    --accent: #3d405b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: auto !important;
+    scroll-padding-top: 70px; /* Sincronizado con el nuevo offset del script */
+    /* Espacio ideal para que el navbar no tape títulos */
+    /* Más espacio para que los títulos respiren */
+    /* Espacio extra para títulos premium */
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: transparent;
+    color: var(--dark);
+    overflow-x: hidden;
+    width: 100%;
+    transition: background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrollbar Premium */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 10px;
+    border: 2px solid var(--dark);
+}
+
+h1,
+h2,
+h3,
+.logo {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+}
+
+/* Colores de fondo dinámicos por sección */
+body[data-active-section="reservas"] {
+    background-color: #0c0c0c;
+}
+
+body[data-active-section="servicios"] {
+    background-color: var(--light);
+}
+
+body[data-active-section="galeria"] {
+    background-color: #f0ede5;
+}
+
+body[data-active-section="reseñas"] {
+    background-color: transparent;
+}
+
+body[data-active-section="contacto"] {
+    background-color: #f4f1ea;
+}
+
+header {
+    background: rgba(18, 18, 18, 0.7);
+    padding: 1.2rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.4s;
+}
+
+header.scrolled {
+    padding: 0.6rem 5%;
+    background: #000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #fff;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--gold);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 2rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+.menu-toggle {
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+/* Estilos para el Loader Premium */
+.loader-wrapper {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+.loader-text {
+    color: #fff;
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+/* Contenedor para Scroll-Driven Canvas Animation */
+.scroll-canvas-container {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    /* Detrás del contenido, delante del video */
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: transparent;
+    /* Aseguramos que no haya fondo negro residual */
+}
+
+#hero-canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    will-change: transform;
+    filter: brightness(0.9);
+    image-rendering: high-quality;
+}
+
+#canvas-container {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Transparencia Global de Secciones */
+section {
+    position: relative;
+    z-index: 10;
+    background: transparent;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.video-background-container {
+    position: absolute;
+    z-index: 0;
+    overflow: hidden;
+}
+
+#hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    filter: contrast(1.1) brightness(1.1);
+    /* Mejora la calidad visual percibida */
+    transition: opacity 1.5s ease;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    background: none;
+}
+
+.hero-content {
+    z-index: 10;
+    max-width: 900px;
+    width: 95%;
+    padding: 20px;
+    position: relative;
+}
+
+.hero-content h1 {
+    font-size: clamp(3.5rem, 12vw, 6rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.4);
+    margin-bottom: 1rem;
+}
+
+.btn-gold {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--gold);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    margin-top: 1.5rem;
+    transition: 0.3s;
+}
+
+.services,
+.gallery,
+.reviews,
+.contact,
+.reservations {
+    padding: 100px 10%;
+    /* Mantenemos padding interno */
+    min-height: calc(100vh - 100px);
+    /* Ajustamos la altura mínima para el snap, restando el header */
+    display: flex;
+    /* Usamos flexbox para centrar el contenido */
+    flex-direction: column;
+    justify-content: center;
+    /* Centra verticalmente el contenido */
+    align-items: center;
+    /* Centra horizontalmente el contenido */
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 0vh;
+    /* Empuja el título más abajo */
+    margin-bottom: 5rem;
+    /* Más espacio entre el título y las tarjetas */
+    letter-spacing: -1px;
+}
+
+.services .section-title {
+    margin-top: 10vh;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(10px);
+    will-change: transform, opacity, filter;
+}
+
+/* SECCIÓN SERVICIOS: STACKING EFFECT */
+.services {
+    min-height: 100vh;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.services-pinned-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.services-stack {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 80%;
+    max-width: 900px;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 0;
+}
+
+.service-card {
+    flex: 1;
+    position: relative;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    padding: 35px 25px;
+    text-align: center;
+    border-radius: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s ease;
+    pointer-events: auto;
+}
+
+.service-card:hover {
+    transform: translateY(-20px) scale(1.02);
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.1);
+}
+
+.service-card i {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.3);
+    display: block;
+    will-change: transform, filter;
+    /* Optimización para animaciones fluidas */
+}
+
+.service-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.service-card p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.gallery {
+    padding: 100px 0 !important;
+    /* Eliminamos el padding lateral para el carrusel full-width */
+    overflow: hidden;
+}
+
+.gallery-carousel {
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-track {
+    display: flex;
+    gap: 30px;
+    padding: 0 30px;
+    will-change: transform;
+}
+
+.gallery-item {
+    flex: 0 0 450px;
+    /* Dimensiones decentes y constantes */
+    height: 550px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    opacity: 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 130%;
+    /* Altura extra para permitir el movimiento de paralaje */
+    object-fit: cover;
+    position: absolute;
+    top: -15%;
+    /* Centrado inicial de la imagen extendida */
+    transition: transform 0.2s cubic-bezier(0, 0, 0.2, 1);
+    /* Movimiento fluido */
+    will-change: transform;
+}
+
+.gallery-item .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(197, 160, 89, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+.gallery-item .overlay span {
+    color: #fff;
+    font-weight: bold;
+    border-bottom: 2px solid #fff;
+}
+
+/* Reviews Premium Carousel */
+.reviews {
+    /* Imagen de fondo con overlay oscuro para resaltar el texto */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/hamburguesa.png') !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Efecto parallax premium */
+    overflow: hidden;
+}
+
+.reviews .section-title {
+    color: #fff;
+}
+
+.reviews-carousel {
+    width: 100vw;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    position: relative;
+    padding: 0 20px;
+}
+
+.reviews-track {
+    display: flex;
+    width: 100%;
+    will-change: transform;
+}
+
+.review-card {
+    flex: 0 0 100%;
+    width: 100%;
+    /* Ocupa el 100% del contenedor padre */
+    max-width: 100%;
+    padding: 60px 40px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+}
+
+.stars {
+    color: var(--gold);
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+}
+
+.review-card p {
+    font-style: italic;
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.review-author {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-size: 0.9rem;
+}
+
+/* Reservations Modern Section */
+.reservations {
+    background: transparent;
+    padding: 120px 10%;
+    color: #fff;
+}
+
+.res-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 60px;
+    border-radius: 30px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.res-info h2 {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+}
+
+.res-form-box input,
+.res-form-box textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-radius: 10px;
+    font-family: inherit;
+}
+
+.btn-reserva {
+    width: 100%;
+    padding: 18px;
+    background: var(--gold);
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.btn-reserva:hover {
+    background: #b38e47;
+    transform: scale(1.02);
+}
+
+/* Estilos de Seguridad */
+.hp-field {
+    display: none !important;
+}
+
+.wa-verify-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.wa-verify-step input {
+    width: 20px !important;
+    height: 20px !important;
+    margin-bottom: 0 !important;
+    cursor: pointer;
+}
+
+/* Contact Section */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+.contact-item i {
+    font-size: 1.8rem;
+    color: var(--gold);
+    background: rgba(197, 160, 89, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.contact-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: var(--dark);
+}
+
+.horario {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 30px;
+}
+
+.horario p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.map-container {
+    height: 500px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    border: 8px solid #fff;
+}
+
+footer {
+    background: var(--dark);
+    color: #fff;
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid #333;
+    scroll-snap-align: end;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #25d366;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1) rotate(15deg);
+}
+
+.whatsapp-float img {
+    width: 30px;
+    filter: brightness(0) invert(1);
+}
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .reviews-carousel {
+        padding: 0 15px;
+        width: 100%;
+    }
+
+    .review-card {
+        padding: 40px 15px;
+        /* Reducción de padding para evitar desbordamiento */
+        min-height: 300px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .res-container {
+        grid-template-columns: 1fr;
+        padding: 30px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services-stack {
+        flex-direction: column;
+    }
+
+    .service-card {
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        /* Oculto a la derecha */
+        background: rgba(18, 18, 18, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+        z-index: 1001;
+        border-left: 2px solid var(--gold);
+        display: flex;
+        /* Mantener flex para permitir la animación de slide */
+    }
+
+    .nav-links.active {
+        right: 0;
+        /* Desplegar desde la derecha */
+    }
+
+    /* Ajuste de padding para evitar que el contenido toque los bordes */
+    .hero-content {
+        padding: 0 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Asegurar que las tarjetas de servicio no sean demasiado altas */
+    .service-card {
+        padding: 30px 20px;
+    }
+
+    .nav-links a {
+        margin: 1.5rem 0;
+        font-size: 1.1rem;
+    }
+
+    .services,
+    .gallery,
+    .reviews,
+    .contact,
+    .reservations {
+        padding: 60px 5%;
+        /* Ajuste de seguridad para móviles */
+    }
+}
