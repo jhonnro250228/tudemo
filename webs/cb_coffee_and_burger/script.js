@@ -85,8 +85,6 @@ window.addEventListener('DOMContentLoaded', () => {
             const sequence = { frame: 0 }; // Aseguramos base 0
             let lastRenderedFrame = -1;
             let renderData = { x: 0, y: 0, w: 0, h: 0 };
-            let lastWidth = window.innerWidth;
-            let lastHeight = window.innerHeight;
 
             // Crear grano de película animado para realismo cinematográfico
             const grainOverlay = document.createElement('div');
@@ -164,15 +162,9 @@ window.addEventListener('DOMContentLoaded', () => {
             }
 
             function resizeCanvas() {
+                const dpr = window.devicePixelRatio || 1;
                 const w = window.innerWidth;
                 const h = window.innerHeight;
-
-                // Optimización móvil: Si el ancho es igual y el cambio de altura es pequeño
-                // (causado por la barra de direcciones), no reiniciamos el canvas.
-                if (w === lastWidth && Math.abs(h - lastHeight) < 110) return;
-                
-                const dpr = Math.min(window.devicePixelRatio || 1, 2); // Capamos a 2 para rendimiento en Retina
-                lastWidth = w; lastHeight = h;
 
                 canvas.width = w * dpr;
                 canvas.height = h * dpr;
@@ -201,9 +193,8 @@ window.addEventListener('DOMContentLoaded', () => {
                     trigger: "#inicio",
                     start: "top top",
                     end: "+=200%", // Duración del efecto de scroll en el Hero
-                    scrub: 1, // Reducido a 1 para que sea más responsivo al tacto en móviles
+                    scrub: 3, // Aumentado para un scroll más suave y elegante en las frames
                     pin: true, // Bloqueamos la sección para que pasen los frames
-                    anticipatePin: 1, // Ayuda a evitar el salto al iniciar el fijado en iOS
                     invalidateOnRefresh: true,
                     refreshPriority: 1
                 }
