@@ -355,7 +355,7 @@ section {
 }
 
 .service-card i {
-    font-size: 3rem;
+    font-size: 2rem;
     color: var(--gold);
     margin-bottom: 1rem;
     text-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.3);
@@ -714,10 +714,25 @@ footer {
 
     .services-stack {
         flex-direction: column;
+        width: 100%; /* Que ocupe todo el ancho disponible */
+        gap: 15px;
     }
 
     .service-card {
         width: 100%;
+        width: 100% !important;
+        max-width: none !important; /* Quitamos el límite anterior */
+        padding: 20px 30px !important; /* Menos alto (20px) y más ancho internamente */
+        display: flex; /* Alineación flexible para que sea más compacta */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: auto; /* Evitamos alturas forzadas */
+    }
+
+    .service-card i {
+        font-size: 2rem; /* Icono más discreto */
+        margin-bottom: 10px;
     }
 
     .menu-toggle {
