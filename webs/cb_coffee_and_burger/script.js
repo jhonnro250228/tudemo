@@ -171,8 +171,10 @@ window.addEventListener('DOMContentLoaded', () => {
                 const w = window.innerWidth;
                 const h = window.innerHeight;
 
-                // Evitar destello: No redibujar si el cambio es solo por la barra de navegación móvil
-                if (lastWidth !== 0 && w === lastWidth && Math.abs(h - lastHeight) < 110) return;
+                // Optimización: Solo evitamos el resize si ya hemos calculado dimensiones (renderData.w !== 0)
+                // y el cambio de tamaño es menor (como el despliegue de la barra de navegación en móviles).
+                // Esto corrige el error donde los frames desaparecían al cargar en móvil.
+                if (renderData.w !== 0 && w === lastWidth && Math.abs(h - lastHeight) < 110) return;
                 
                 // Optimización extrema: Limitamos DPR a 1.5 en móviles para reducir calor y consumo de batería
                 const dpr = w < 768 ? 1.5 : Math.min(window.devicePixelRatio || 1, 2);

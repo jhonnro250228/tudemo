@@ -730,7 +730,7 @@ footer {
     }
 
     .service-card {
-        width: 100%;
+        
         width: 100% !important;
         max-width: none !important; /* Quitamos el límite anterior */
         padding: 20px 30px !important; /* Menos alto (20px) y más ancho internamente */
