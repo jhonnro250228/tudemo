@@ -719,21 +719,20 @@ footer {
     }
 
     .service-card {
+        width: 100%;
         width: 100% !important;
-        max-width: none !important;
-        padding: 15px 25px !important; /* Altura reducida significativamente */
-        min-height: auto !important;
-        display: flex;
-        flex-direction: row; /* Icono a la izquierda, texto a la derecha */
+        max-width: none !important; /* Quitamos el límite anterior */
+        padding: 20px 30px !important; /* Menos alto (20px) y más ancho internamente */
+        display: flex; /* Alineación flexible para que sea más compacta */
+        flex-direction: column;
         align-items: center;
-        text-align: left;
-        gap: 20px;
-        border-radius: 15px;
+        justify-content: center;
+        min-height: auto; /* Evitamos alturas forzadas */
     }
 
     .service-card i {
-        font-size: 1.8rem;
-        margin-bottom: 0;
+        font-size: 2rem; /* Icono más discreto */
+        margin-bottom: 10px;
     }
 
     .menu-toggle {
@@ -773,11 +772,10 @@ footer {
         font-size: 2rem;
         margin-bottom: 2rem;
     }
-    
-    /* Corrección para imágenes de fondo en móviles */
-    .reviews {
-        background-attachment: scroll !important;
-        background-position: center center;
+
+    /* Asegurar que las tarjetas de servicio no sean demasiado altas */
+    .service-card {
+        padding: 30px 20px;
     }
 
     .nav-links a {
