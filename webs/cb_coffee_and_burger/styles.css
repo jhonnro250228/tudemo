@@ -290,48 +290,42 @@ section {
 
 .section-title {
     text-align: center;
-    font-size: 3rem;
-    margin-top: -3vh;
-    /* Empuja el título másabajo */
-    margin-bottom: 1rem;
-    /* Más espacio entre el título y las tarjetas */
-    letter-spacing: -1px;
+    font-size: 3.2rem;
+    margin-top: 6vh;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
 }
 
+
 .services .section-title {
-    margin-top: 10vh;
-    margin-bottom: 1rem;
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
     filter: blur(10px);
     will-change: transform, opacity, filter;
 }
 
 /* SECCIÓN SERVICIOS: STACKING EFFECT */
 .services {
-    min-height: 100vh;
+    height: 100vh;
     padding: 0 !important;
     overflow: hidden;
 }
 
 .services-pinned-wrapper {
     height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 5%;
 }
 
 .services-stack {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    width: 80%;
+    position: relative;
+    width: 100%;
     max-width: 900px;
-    justify-content: center;
-    align-items: stretch;
-    margin-top: 0;
+    height: 600px;
+    margin: 0 auto;
 }
 
 .service-card {
@@ -368,9 +362,10 @@ section {
 
 .service-card h3 {
     font-size: 1.6rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     color: var(--dark);
 }
+
 
 .service-card p {
     color: #666;
@@ -379,10 +374,11 @@ section {
 }
 
 .gallery {
-    padding: 100px 0 !important;
+    padding: 40px 0 !important;
     /* Eliminamos el padding lateral para el carrusel full-width */
     overflow: hidden;
 }
+
 
 .gallery-carousel {
     width: 100vw;
@@ -725,6 +721,12 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .service-card, .res-container{
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+    }
+
     .services-stack {
         flex-direction: column;
         width: 100%; /* Que ocupe todo el ancho disponible */
@@ -801,7 +803,7 @@ footer {
     .reviews,
     .contact,
     .reservations {
-        padding: 60px 5%;
+        padding: 30px 5%;
         /* Ajuste de seguridad para móviles */
     }
 }

@@ -2,13 +2,10 @@ window.addEventListener('DOMContentLoaded', () => {
     // 0. INICIALIZACIÓN DE PLUGINS
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-    // Deshabilitamos la normalización para permitir que el navegador móvil 
-    // gestione de forma nativa la ocultación/aparición de la barra de direcciones.
-
     ScrollTrigger.config({ 
         limitCallbacks: true,
-        ignoreMobileResize: true, // Evita saltos visuales cuando la barra de direcciones aparece/desaparece
-        autoRefreshEvents: "visibilitychange,DOMContentLoaded,load" 
+        ignoreMobileResize: true,
+        autoRefreshEvents: "visibilitychange,DOMContentLoaded,load"
     });
 
     // 1. BACKGROUND 3D CON THREE.JS
@@ -80,7 +77,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // 1.2 ANIMACIÓN DE SECUENCIA DE IMÁGENES (APPLE STYLE)
     if (useCanvasSequence) {
-        // Ocultar el video de fondo inmediatamente si estamos usando la secuencia de canvas
         const videoBg = document.querySelector('.video-background-container');
         if (videoBg) {
             videoBg.style.display = 'none';
@@ -88,10 +84,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const canvas = document.getElementById('hero-canvas');
         if (canvas) {
             const context = canvas.getContext('2d');
-            // Configuración de renderizado de alta calidad
-            context.imageSmoothingEnabled = true;
-            context.imageSmoothingQuality = 'high';
-            const frameCount = parseInt("0") || 90; // Fallback a 90 si no se detecta
+            const frameCount = 90; // Forzamos los 90 frames para la secuencia completa
 
             // Generar rutas de frames (asumiendo formato frames/frame_0001.webp)
             const currentFrame = index => (`frames_hamburguesa/frame_${(index + 1).toString().padStart(4, '0')}.webp`);
@@ -100,8 +93,6 @@ window.addEventListener('DOMContentLoaded', () => {
             const sequence = { frame: 0 }; // Aseguramos base 0
             let lastRenderedFrame = -1;
             let renderData = { x: 0, y: 0, w: 0, h: 0 };
-            let lastWidth = 0;
-            let lastHeight = 0;
 
             // Crear grano de película animado para realismo cinematográfico
             const grainOverlay = document.createElement('div');
@@ -147,10 +138,12 @@ window.addEventListener('DOMContentLoaded', () => {
                             firstFrameLoaded = true;
                             resizeCanvas();
                             render(true);
+                            // Hacemos el canvas visible inmediatamente después de renderizar el primer frame
+                            canvas.style.opacity = "1";
+
                             // Asegurar que la experiencia inicie correctamente
                             setTimeout(startExperience, 150);
                             window.dispatchEvent(new Event('framesReady'));
-                            // Hacemos el canvas visible inmediatamente después de renderizar el primer frame
                             canvas.style.opacity = "1";
                         };
                         if (img.complete) img.onload();
@@ -181,18 +174,13 @@ window.addEventListener('DOMContentLoaded', () => {
                 const w = window.innerWidth;
                 const h = window.innerHeight;
 
-                // Optimización: Solo evitamos el resize si ya hemos calculado dimensiones (renderData.w !== 0)
-                // y el cambio de tamaño es menor (como el despliegue de la barra de navegación en móviles).
-                // Esto corrige el error donde los frames desaparecían al cargar en móvil.
                 if (renderData.w !== 0 && w === lastWidth && Math.abs(h - lastHeight) < 110) return;
                 
-                // Limitamos DPR para rendimiento
                 const dpr = w < 768 ? 1.5 : Math.min(window.devicePixelRatio || 1, 2);
                 lastWidth = w; lastHeight = h;
 
                 canvas.width = w * dpr;
                 canvas.height = h * dpr;
-                // Eliminamos canvas.style.height fijo para que el CSS (100dvh) lo gestione
 
                 context.setTransform(dpr, 0, 0, dpr, 0, 0);
 
@@ -210,40 +198,47 @@ window.addEventListener('DOMContentLoaded', () => {
             window.addEventListener("resize", resizeCanvas);
             resizeCanvas();
 
-            // 1.1 ANIMACIÓN DE FRAMES Y PIN DEL HERO (Solo en sección Inicio)
+            // 1.1 ANIMACIÓN GLOBAL DE FRAMES
             const framesTL = gsap.timeline({
                 scrollTrigger: {
                     trigger: "#inicio",
                     start: "top top",
-                    end: "+=300%", // Mayor recorrido de scroll para una transición más pausada y lujosa
-                    scrub: 1.5, // Inercia aumentada para un movimiento cinemático con "peso" premium
-                    pin: true, // Bloqueamos la sección para que pasen los frames
-                    anticipatePin: 1, // Evita el salto inicial en iOS
+                    end: "+=200%",
+                    scrub: 2,
+                    pin: true,
                     invalidateOnRefresh: true,
-                    refreshPriority: 1
+                    anticipatePin: 1
                 }
             });
 
             framesTL.to(sequence, {
                 frame: Math.max(0, frameCount - 1),
+                snap: "frame",
                 ease: "none",
                 onUpdate: render,
                 duration: 10
             }, 0);
 
             framesTL.to(canvas, {
-                scale: 1.05, // Zoom más sutil
+                scale: 1.05,
                 ease: "none",
                 duration: 10
             }, 0);
 
-            // Desvanecimiento del contenido (Texto) sincronizado con el final de los frames
-            framesTL.to(".hero-content", {
+            // 1.2 PIN DEL CONTENIDO DEL HERO
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".hero-content",
+                    start: "top top",
+                    end: "bottom center",
+                    scrub: true
+                }
+            }).to(".hero-content", {
                 opacity: 0,
-                y: -80,
-                duration: 3,
+                y: -100,
+                duration: 1,
                 ease: "power2.in"
-            }, 7); // Empieza a desaparecer cuando la secuencia va al 70%
+            }, 0.5);
         }
     }
 
@@ -279,7 +274,7 @@ window.addEventListener('DOMContentLoaded', () => {
             scrollTrigger: {
                 trigger: ".services",
                 start: "top top",
-                end: "+=150%",
+                end: "+=300%",
                 pin: true,
                 scrub: 1,
                 anticipatePin: 1
@@ -301,24 +296,28 @@ window.addEventListener('DOMContentLoaded', () => {
         if (skyscraper) {
             servicesTL.to(skyscraper, {
                 filter: "blur(20px)",
-                opacity: 0.3, // Reducimos opacidad para dar protagonismo a las tarjetas
+                opacity: 0.3,
                 duration: 1.5,
                 ease: "power2.inOut"
-            }, 0); // Ocurre al mismo tiempo que entra la primera tarjeta
+            }, 0);
         }
 
-        // Animación Horizontal Premium: Revelado escalonado (Stagger)
-        servicesTL.to(serviceCards, {
-            opacity: 1,
-            y: 0,
-            stagger: 0.3,
-            duration: 1.5,
-            ease: "power4.out",
-            onStart: () => serviceCards.forEach(c => c.style.pointerEvents = "auto")
-        }, 0.2);
+        serviceCards.forEach((card, i) => {
+            const yOffset = window.innerWidth < 768 ? i * 60 : i * 30;
+            servicesTL.to(card, {
+                opacity: 1,
+                y: yOffset,
+                scale: 1 - (i * 0.02),
+                duration: 1.2,
+                ease: "power2.out",
+                onStart: () => card.style.pointerEvents = "auto"
+            }, i * 0.5);
+        });
     }
 
-    // 14. GALERÍA: EFECTO CARRUSEL HORIZONTAL (Estilo Reseñas)
+    // Refresco de ScrollTrigger para asegurar que la galería se renderice
+    ScrollTrigger.refresh();
+
     const galTrack = document.querySelector('.gallery-track');
     if (galTrack) {
         const galItems = gsap.utils.toArray(".gallery-item");
@@ -334,10 +333,11 @@ window.addEventListener('DOMContentLoaded', () => {
             scrollTrigger: {
                 trigger: ".gallery",
                 start: "top top",
-                end: () => "+=" + (galTrack.scrollWidth * 0.5),
+                end: () => "+=" + (galTrack.scrollWidth * 0.8),
                 pin: true,
                 scrub: 1.5,
-                invalidateOnRefresh: true
+                invalidateOnRefresh: true,
+                refreshPriority: -1
             }
         });
     }
@@ -364,8 +364,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
             const loader = document.querySelector('.loader-wrapper');
             const loaderContent = loader.querySelectorAll('.loader, .loader-text');
+            
+            // Ocultar spinner y texto para que sea un fundido a negro limpio
             loaderContent.forEach(el => el.style.visibility = 'hidden');
 
+            // Teletransportación Premium: Fundido a negro total
             gsap.to(loader, {
                 opacity: 1,
                 duration: 0.3,
@@ -375,11 +378,17 @@ window.addEventListener('DOMContentLoaded', () => {
                     if (targetId === '#inicio') {
                         window.scrollTo(0, 0);
                     } else {
-                        const offset = 70;
-                        const top = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-                        window.scrollTo(0, top);
+                        const headerOffset = 90;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'auto'
+                        });
                     }
-                    
+
+                    // Sincronizar ScrollTrigger inmediatamente para evitar saltos visuales de frames
                     ScrollTrigger.refresh();
 
                     gsap.to(loader, { 
@@ -444,6 +453,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 pin: true,
                 scrub: 1,
                 invalidateOnRefresh: true,
+                refreshPriority: -1
             }
         });
     }
@@ -452,7 +462,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const floatingTrigger = document.getElementById('wa-floating-trigger');
     if (floatingTrigger) {
         floatingTrigger.addEventListener('click', () => {
-            window.open(`https://wa.me/34664864946`, '_blank');
+            window.open(`https://wa.me/3123957174`, '_blank');
         });
     }
 
@@ -472,7 +482,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             const texto = `Hola! Me gustaría realizar una reserva.\n\n👤 Nombre: ${nombre}\n📅 Fecha/Hora: ${fecha}\n📝 Notas: ${mensaje}`;
             const encodedText = encodeURIComponent(texto);
-            const whatsappUrl = `https://wa.me/34664864946?text=${encodedText}`;
+            const whatsappUrl = `https://wa.me/3123957174?text=${encodedText}`;
 
             window.open(whatsappUrl, '_blank');
         });
