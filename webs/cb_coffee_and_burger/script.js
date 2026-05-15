@@ -303,13 +303,10 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         serviceCards.forEach((card, i) => {
-            const yOffset = window.innerWidth < 768 ? i * 60 : i * 30;
             servicesTL.to(card, {
                 opacity: 1,
-                y: yOffset,
-                scale: 1 - (i * 0.02),
-                duration: 1.2,
-                ease: "power2.out",
+                y: i * 20,
+                duration: 1,
                 onStart: () => card.style.pointerEvents = "auto"
             }, i * 0.5);
         });

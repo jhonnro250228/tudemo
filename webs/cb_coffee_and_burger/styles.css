@@ -675,14 +675,10 @@ footer {
 
 @media (max-width: 768px) {
     /* Optimizamos rendimiento eliminando filtros pesados en móvil */
-    header, .service-card, .res-container {
+     header {
+        background: rgba(18, 18, 18, 0.98) !important;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
-        background: rgba(255, 255, 255, 0.95) !important; /* Fondo sólido para compensar */
-    }
-
-    header {
-        background: rgba(18, 18, 18, 0.98) !important;
     }
 
     .contact-grid {
@@ -733,16 +729,25 @@ footer {
         gap: 15px;
     }
 
-    .service-card {
-        
-        width: 100% !important;
-        max-width: none !important; /* Quitamos el límite anterior */
-        padding: 20px 30px !important; /* Menos alto (20px) y más ancho internamente */
-        display: flex; /* Alineación flexible para que sea más compacta */
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: auto; /* Evitamos alturas forzadas */
+   .service-card {
+         flex: 1;
+    position: relative;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    padding: 35px 25px;
+    text-align: center;
+    border-radius: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s ease;
+    pointer-events: auto;
+    }
+
+    .menu-toggle {
+        display: block;
     }
 
     .service-card i {
@@ -750,9 +755,7 @@ footer {
         margin-bottom: 10px;
     }
 
-    .menu-toggle {
-        display: block;
-    }
+    
 
     .nav-links {
         position: fixed;
@@ -788,9 +791,9 @@ footer {
         margin-bottom: 2rem;
     }
 
-    /* Asegurar que las tarjetas de servicio no sean demasiado altas */
-    .service-card {
-        padding: 30px 20px;
+    .service-card i {
+        font-size: 1.8rem;
+        margin-bottom: 0 !important;
     }
 
     .nav-links a {
