@@ -2,6 +2,25 @@ window.addEventListener('DOMContentLoaded', () => {
     // 0. INICIALIZACIÓN DE PLUGINS
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
+    // 0.1 CONFIGURACIÓN DE LENIS (SMOOTH SCROLL) - Con Guardia de seguridad
+    let lenis;
+    if (typeof Lenis !== 'undefined') {
+        lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+    }
+
     ScrollTrigger.config({ 
         limitCallbacks: true,
         ignoreMobileResize: true,
@@ -548,14 +567,17 @@ window.addEventListener('DOMContentLoaded', () => {
     // 11. SECUENCIA DE CARGA Y REVELACIÓN (GSAP)
     // Nueva lógica de carga: Espera a los recursos Y al primer frame de la secuencia
     const startExperience = () => {
-        if (useCanvasSequence && !firstFrameLoaded) return;
         if (window.experienceStarted) return;
+        
+        // Si usamos secuencia, esperamos al primer frame, pero el timeout de seguridad (abajo)
+        // forzará firstFrameLoaded = true si algo falla.
+        if (useCanvasSequence && !firstFrameLoaded) return;
 
         window.experienceStarted = true;
 
         // Carga Asíncrona de Video
         const video = document.getElementById('hero-video');
-        const videoUrl = "NONE";
+        const videoUrl = video ? video.getAttribute('poster') : "NONE"; // Fallback seguro
         if (video && videoUrl !== "NONE") {
             const source = document.createElement('source');
             source.src = videoUrl;
@@ -573,27 +595,31 @@ window.addEventListener('DOMContentLoaded', () => {
 
         const tl = gsap.timeline();
 
+        // EFECTO TELÓN: Sube el fondo negro y revela el contenido
         tl.to(".loader-wrapper", {
-            duration: 0.8,
-            opacity: 0,
+            yPercent: -100,
+            duration: 1.2,
+            ease: "power4.inOut",
             pointerEvents: "none",
-            ease: "power2.inOut"
+            onComplete: () => {
+                const lw = document.querySelector('.loader-wrapper');
+                if(lw) lw.style.display = 'none';
+                ScrollTrigger.refresh(); // Refrescamos al terminar la carga
+            }
         })
-            .to(".hero-content", {
-                opacity: 1,
-                y: 0,
-                duration: 1.2,
-                ease: "expo.out",
-                clearProps: "all" // Asegura que el scrollTrigger tome el control después
-            }, "-=0.4")
-            .from(".reveal-text", {
-                duration: 1.4,
-                y: 80,
-                skewY: 7,
-                opacity: 0,
-                stagger: 0.2,
-                ease: "expo.out"
-            }, "-=0.3");
+        .to(".hero-content", {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out"
+        }, "-=0.6")
+        .from(".hero-content > *", { 
+            y: 40,
+            autoAlpha: 0,
+            duration: 1,
+            stagger: 0.15,
+            ease: "power3.out"
+        }, "-=0.4");
     };
 
     window.addEventListener('load', startExperience);

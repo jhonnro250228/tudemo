@@ -12,7 +12,7 @@
 }
 
 html {
-    scroll-behavior: auto !important;
+   scroll-behavior: initial !important; /* Lenis gestiona el suavizado */
     scroll-padding-top: 70px; /* Sincronizado con el nuevo offset del script */
     /* Espacio ideal para que el navbar no tape títulos */
     /* Más espacio para que los títulos respiren */
@@ -142,6 +142,7 @@ nav {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    will-change: transform; /* Prepara la GPU para el efecto telón */
 }
 
 .loader {
@@ -149,6 +150,7 @@ nav {
     height: 50px;
     border: 3px solid rgba(255, 255, 255, 0.1);
     border-top-color: var(--gold);
+    will-change: transform;
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin-bottom: 20px;
@@ -244,6 +246,8 @@ section {
     max-width: 900px;
     width: 95%;
     padding: 20px;
+    opacity: 0;
+    transform: translateY(30px); /* Posición inicial para el reveal */
     position: relative;
 }
 
