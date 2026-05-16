@@ -728,26 +728,15 @@ footer {
     }
 
     .services-stack {
+        height: auto !important;
         flex-direction: column;
-        width: 100%; /* Que ocupe todo el ancho disponible */
         gap: 15px;
+        padding: 20px 0;
     }
 
    .service-card {
-         flex: 1;
-    position: relative;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    padding: 35px 25px;
-    text-align: center;
-    border-radius: 0px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
-    opacity: 0;
-    transform: translateY(50px);
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s ease;
-    pointer-events: auto;
+        padding: 20px 15px;
+        min-height: auto;
     }
 
     .menu-toggle {
@@ -755,8 +744,13 @@ footer {
     }
 
     .service-card i {
-        font-size: 2rem; /* Icono más discreto */
-        margin-bottom: 10px;
+        font-size: 1.8rem;
+        margin-bottom: 8px !important;
+    }
+
+    .service-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
     }
 
     
